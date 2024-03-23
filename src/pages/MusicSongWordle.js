@@ -1,4 +1,4 @@
-export default function Messaging() {
+export default function MusicSongWordle() {
     return (
         <>Here Messaging</>
     )
