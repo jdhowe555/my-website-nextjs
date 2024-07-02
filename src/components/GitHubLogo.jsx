@@ -7,5 +7,5 @@ export default function GitHubLogo({ size = 25, link = "https://github.com/jdhow
                 <Logo style={{width: '100%', height: '100%'}}/>
             </a>
         </div>
-);
+    );
 };
