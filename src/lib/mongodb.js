@@ -4,7 +4,6 @@ import { MongoClient } from 'mongodb';
 console.log('MongoDb started');
 
 const uri = process.env.MONGODB_URI;
-console.log(uri);
 const options = {};
 
 let client;
@@ -25,6 +24,7 @@ if (process.env.NODE_ENV === 'development') {
     clientPromise = client.connect();
 }
 
+console.info(clientPromise);
 console.log('MongoDb finished');
 
 export default clientPromise;

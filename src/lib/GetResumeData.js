@@ -5,6 +5,7 @@ export async function getResumeData() {
     console.log('GetResume started');
 
     try {
+        console.log('why');
         const client = await clientPromise;
         console.log(client);
         const db = client.db('website');
