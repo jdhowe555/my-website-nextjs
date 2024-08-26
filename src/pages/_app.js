@@ -8,7 +8,7 @@ import {Bars3Icon, BellIcon, XMarkIcon} from "@heroicons/react/24/outline";
 
 let navigation = [
     {name: 'Resume', href: '/Resume', current: true},
-    {name: 'Music World', href: '/MusicSongWordle', current: false}
+    {name: 'ResumePdf', href: '/ResumePdf', current: false}
 ]
 
 function classNames(...classes) {
