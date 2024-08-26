@@ -16,6 +16,9 @@ function classNames(...classes) {
 }
 
 export default function MyApp({ Component, pageProps }) {
+    // Log a starting message
+    console.log("Next.js application has started");
+
     const router = useRouter();
     // Update navigation items to dynamically set the current based on the pathname
     const updatedNavigation = navigation.map(item => ({
