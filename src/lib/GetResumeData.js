@@ -6,10 +6,11 @@ export async function getResumeData() {
 
     try {
         const client = await clientPromise;
+        console.log(client);
         const db = client.db('website');
-
+        console.log(db);
         const data = await db.collection('resume').findOne({});
-
+        console.log(data);
         console.log('GetResume finished');
         return {
             props: { data: JSON.parse(JSON.stringify(data)) },
