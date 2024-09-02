@@ -13,8 +13,8 @@ export async function getServerSideProps() {
 }
 
 const RenderPDF = ({data}) => (
-    <div style={{ height: '100vh' }}>
-        <PDFViewer width="100%" height="100%">
+    <div className="h-screen w-lvw">
+        <PDFViewer className="w-full h-full">
             <ResumePdf data={data} />
         </PDFViewer>
     </div>
