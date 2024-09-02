@@ -16,31 +16,39 @@ export default function Resume({data}) {
     const sortedJobTitles = [...jobRoles].sort((a, b) => parseInt(a.yearStart) - parseInt(b.yearStart)).map(m => m.jobTitle);
 
     return (
-        <div className="flex w-full min-w-screen justify-center min-h-[calc(100vh_-_4rem)]">
+        <div className="flex w-full md:min-w-screen md:justify-center min-h-[calc(100vh_-_4rem)]">
             <div className="flex flex-col md:flex-row gap-4 py-24">
-                <header id="general" className="flex flex-col gap-3 sticky w-80">
-                    <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
-                        {generalInfo.name}
-                    </h1>
-                    <h2 className="text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
-                        <TypeJs strings={sortedJobTitles}></TypeJs>
-                    </h2>
-                    <ul>{generalInfo.schooling.map((school, i) => (
-                        <li key={i}>
-                            <div className="flex flex-col gap-.5">
-                                <span>{school.name}</span>
-                                <span>{school.location}</span>
-                            </div>
-                        </li>
-                    ))}</ul>
-                    <ul className="mt-1 max-w-xs leading-normal">
-                        {generalInfo.degrees.map(((degree, i) => (
-                            <li key={i} className="">{degree}</li>
-                        )))}
-                    </ul>
-                    <div className="flex flex-row gap-2 mt-auto">
-                        <GitHubLogo></GitHubLogo>
-                        <LinkedinLogo></LinkedinLogo>
+                <header id="general" className="md:flex md:flex-col md:gap-3 md:w-80 grid grid-cols-2 sticky px-4">
+                    <div className="flex flex-col gap-3">
+                        <h1 className="text-4xl font-bold tracking-tight text-slate-200 sm:text-5xl">
+                            {generalInfo.name}
+                        </h1>
+                        <h2 className="text-lg font-medium tracking-tight text-slate-200 sm:text-xl">
+                            <TypeJs strings={sortedJobTitles}></TypeJs>
+                        </h2>
+                        <div className="flex flex-row gap-2 mt-auto md:hidden">
+                            <GitHubLogo></GitHubLogo>
+                            <LinkedinLogo></LinkedinLogo>
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-3 md:h-full">
+                        <ul>{generalInfo.schooling.map((school, i) => (
+                            <li key={i}>
+                                <div className="flex flex-col gap-.5">
+                                    <span>{school.name}</span>
+                                    <span>{school.location}</span>
+                                </div>
+                            </li>
+                        ))}</ul>
+                        <ul className="mt-1 max-w-xs leading-normal">
+                            {generalInfo.degrees.map(((degree, i) => (
+                                <li key={i} className="">{degree}</li>
+                            )))}
+                        </ul>
+                        <div className="md:flex flex-row gap-2 mt-auto hidden">
+                            <GitHubLogo></GitHubLogo>
+                            <LinkedinLogo></LinkedinLogo>
+                        </div>
                     </div>
                 </header>
                 <div className="flex flex-col gap-10 w-[40rem]">
