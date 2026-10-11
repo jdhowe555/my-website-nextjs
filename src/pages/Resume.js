@@ -16,7 +16,7 @@ export default function Resume({data}) {
     const sortedJobTitles = [...jobRoles].sort((a, b) => parseInt(a.yearStart) - parseInt(b.yearStart)).map(m => m.jobTitle);
 
     return (
-        <div className="flex w-full md:min-w-screen md:justify-center min-h-[calc(100vh_-_4rem)]">
+        <div className="flex w-full md:min-w-screen md:justify-center min-h-[calc(100vh-4rem)]">
             <div className="flex flex-col md:flex-row gap-4 py-24">
                 <header id="general" className="md:flex md:flex-col md:gap-3 md:w-80 grid grid-cols-2 sticky px-4">
                     <div className="flex flex-col gap-3">

@@ -1,30 +1,29 @@
-// lib/mongodb.js
 import { MongoClient } from 'mongodb';
 
-console.log('MongoDb started');
-
-const uri = process.env.MONGODB_URI;
-const options = {};
-
-let client;
 let clientPromise;
 
-if (!process.env.MONGODB_URI) {
-    throw new Error('Please add your Mongo URI to .env.local');
-}
-
-if (process.env.NODE_ENV === 'development') {
-    if (!global._mongoClientPromise) {
-        client = new MongoClient(uri, options);
-        global._mongoClientPromise = client.connect();
+// Connect only when server-side data is requested, not during next build.
+export default function getMongoClient() {
+    const uri = process.env.MONGODB_URI;
+    if (!uri) {
+        throw new Error('Please add your Mongo URI to .env.local');
     }
-    clientPromise = global._mongoClientPromise;
-} else {
-    client = new MongoClient(uri, options);
-    clientPromise = client.connect();
+
+    if (process.env.NODE_ENV === 'development') {
+        if (!global._mongoClientPromise) {
+            global._mongoClientPromise = new MongoClient(uri).connect().catch(error => {
+                global._mongoClientPromise = undefined;
+                throw error;
+            });
+        }
+        return global._mongoClientPromise;
+    }
+
+    if (!clientPromise) {
+        clientPromise = new MongoClient(uri).connect().catch(error => {
+            clientPromise = undefined;
+            throw error;
+        });
+    }
+    return clientPromise;
 }
-
-console.info(clientPromise);
-console.log('MongoDb finished');
-
-export default clientPromise;
